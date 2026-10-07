@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24 de Marzo - Día Nacional de la Memoria por la Verdad y la Justicia</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        patria: {
+                            100: '#e0f2fe',
+                            500: '#38bdf8',
+                            700: '#0284c7',
+                            900: '#0369a1',
+                        },
+                        memory: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .scarf-pattern {
+            background-color: #ffffff;
+            opacity: 0.03;
+            background-image: radial-gradient(#000000 0.75px, transparent 0.75px), radial-gradient(#000000 0.75px, #ffffff 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+        .dark .scarf-pattern {
+            background-image: radial-gradient(#ffffff 0.75px, transparent 0.75px), radial-gradient(#ffffff 0.75px, #0f172a 0.75px);
+        }
+        /* Glassmorphic elements */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 font-sans antialiased selection:bg-sky-500 selection:text-white">
+
+    <!-- Sticky Navigation -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <!-- Símbolo Pañuelo SVG -->
+                    <svg class="w-8 h-8 text-sky-600 dark:text-sky-400" viewBox="0 0 100 100" fill="currentColor">
+                        <path d="M 10,20 Q 50,5 90,20 Q 80,75 50,90 Q 20,75 10,20 Z" fill="none" stroke="currentColor" stroke-width="6"/>
+                        <path d="M 25,30 C 40,20 60,20 75,30 C 65,65 50,75 50,75 C 50,75 35,65 25,30 Z" fill="currentColor" opacity="0.15"/>
+                        <path d="M 35,35 Q 50,25 65,35" fill="none" stroke="currentColor" stroke-width="4"/>
+                    </svg>
+                    <a href="#hero" class="font-serif font-bold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white">
+                        24 de Marzo <span class="text-sky-600 dark:text-sky-400 font-sans text-xs sm:text-sm font-semibold uppercase tracking-wider block sm:inline sm:ml-2">Memoria, Verdad y Justicia</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium">
+                    <a href="#contexto" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Contexto</a>
+                    <a href="#linea-tiempo" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Línea de Tiempo</a>
+                    <a href="#represion" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Terrorismo de Estado</a>
+                    <a href="#organismos" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Organismos</a>
+                    <a href="#juicios" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Juicios</a>
+                    <a href="#glosario" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Glosario</a>
+                    <a href="#documentos" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Documentos</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="flex items-center space-x-3">
+                    <button id="themeToggle" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Cambiar Tema">
+                        <i class="fa-solid fa-moon dark:hidden text-lg"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-lg text-amber-400"></i>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 bg-slate-50/95 dark:bg-slate-900/95 px-4 pt-2 pb-4 space-y-2 text-base font-medium">
+            <a href="#contexto" class="block py-2 px-3 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800">Contexto Histórico</a>
+            <a href="#linea-tiempo" class="block py-2 px-3 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800">Línea de Tiempo</a>
+            <a href="#represion" class="block py-2 px-3 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800">Terrorismo de Estado</a>
+            <a href="#organismos" class="block py-2 px-3 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800">Organismos de DDHH</a>
+            <a href="#juicios" class="block py-2 px-3 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800">Juicios y Memoria</a>
+            <a href="#glosario" class="block py-2 px-3 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800">Glosario Interactivo</a>
+            <a href="#documentos" class="block py-2 px-3 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800">Documentos Históricos</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative overflow-hidden bg-slate-900 text-white py-24 sm:py-32 border-b border-slate-800">
+        <div class="absolute inset-0 scarf-pattern"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/80 to-transparent"></div>
+        
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sky-950/80 border border-sky-500/30 text-sky-300 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-6">
+                <i class="fa-solid fa-ribbon text-sky-400"></i>
+                <span>Día Nacional de la Memoria por la Verdad y la Justicia</span>
+            </div>
+            
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-slate-100 leading-tight mb-6">
+                24 DE MARZO DE 1976
+            </h1>
+            
+            <p class="font-serif italic text-2xl sm:text-4xl text-sky-400 font-light mb-8">
+                «Nunca Más»
+            </p>
+            
+            <p class="max-w-3xl mx-auto text-lg sm:text-xl text-slate-300 font-light leading-relaxed mb-10">
+                A 48 años del golpe de Estado civico-militar que instauró la dictadura más sangrienta de la historia argentina. Recordamos a las víctimas del terrorismo de Estado, homenajeamos la lucha inquebrantable por los Derechos Humanos y reafirmamos el compromiso democrático intergeneracional.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#linea-tiempo" class="px-6 py-3.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium shadow-lg shadow-sky-600/25 transition-all flex items-center space-x-2">
+                    <span>Explorar Historia</span>
+                    <i class="fa-solid fa-arrow-down text-sm"></i>
+                </a>
+                <a href="#documentos" class="px-6 py-3.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium transition-all flex items-center space-x-2">
+                    <i class="fa-solid fa-book-open text-sky-400"></i>
+                    <span>Leer Documentos</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contexto Histórico -->
+    <section id="contexto" class="py-16 sm:py-24 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-widest mb-2">Antecedentes y Quiebre Institucional</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">El Golpe de Estado y la Ruptura Democrática</h3>
+                <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed font-light">
+                    <p>
+                        El 24 de marzo de 1976, las Fuerzas Armadas encabezadas por Jorge Rafael Videla, Emilio Eduardo Massera y Orlando Ramón Agosti derrocaron al gobierno constitucional de María Estela Martínez de Perón. Se estableció así una junta militar que autodenominó a su gestión como <strong class="text-slate-900 dark:text-white font-medium">"Proceso de Reorganización Nacional"</strong>.
+                    </p>
+                    <p>
+                        El golpe no fue un hecho aislado, sino la culminación de un proceso de creciente violencia política y polarización en el marco de la Guerra Fría y la «Doctrina de la Seguridad Nacional» impulsada por Estados Unidos en la región (Plan Cóndor).
+                    </p>
+                    <p>
+                        Desde las primeras horas del golpe, se suspendieron las garantías constitucionales, se disolvió el Congreso Nacional, se destituyó a los miembros de la Corte Suprema, se prohibió la actividad de los partidos políticos y sindicatos, y se impuso la censura previa sobre la prensa y las manifestaciones culturales.
+                    </p>
+                </div>
+
+                <div class="bg-slate-100 dark:bg-slate-800/80 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-6">
+                    <h4 class="font-serif font-bold text-xl text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-500 text-lg"></i>
+                        Ejes del Plan Sistemático
+                    </h4>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start space-x-3">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xs font-bold mt-0.5">1</span>
+                            <span class="text-sm text-slate-700 dark:text-slate-300"><strong>Secuestro y Desaparición:</strong> Captura clandestina de opositores políticos, sindicalistas, estudiantes y profesionales.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xs font-bold mt-0.5">2</span>
+                            <span class="text-sm text-slate-700 dark:text-slate-300"><strong>Centros Clandestinos:</strong> Creación de más de 700 espacios de tortura y exterminio sin control judicial.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xs font-bold mt-0.5">3</span>
+                            <span class="text-sm text-slate-700 dark:text-slate-300"><strong>Apropiación de Menores:</strong> Sustracción sistemática de nacidos en cautiverio y supresión de su identidad.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xs font-bold mt-0.5">4</span>
+                            <span class="text-sm text-slate-700 dark:text-slate-300"><strong>Plan Económico Cómplice:</strong> Desindustrialización, endeudamiento externo y caída drástica del salario real.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Línea de Tiempo Interactiva -->
+    <section id="linea-tiempo" class="py-16 sm:py-24 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-widest mb-2">Cronología Histórica</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Línea del Tiempo (1973 - Actualidad)</h3>
+                <p class="text-slate-600 dark:text-slate-400 mt-2">Haz clic en cada hito para explorar el detalle histórico.</p>
+                <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Horizontal / Vertical Timeline Container -->
+            <div id="timeline-container" class="relative">
+                <!-- Center Line for desktop -->
+                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-slate-300 dark:bg-slate-800"></div>
+
+                <div class="space-y-12">
+                    <!-- Event 1: 1973-1976 -->
+                    <div class="relative flex flex-col md:flex-row items-center group cursor-pointer timeline-item" onclick="toggleTimelineDetail('detail-1')">
+                        <div class="flex items-center justify-end w-full md:w-1/2 md:pr-10 text-right mb-4 md:mb-0">
+                            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md group-hover:border-sky-500 transition-all w-full">
+                                <span class="text-xs font-bold text-sky-600 dark:text-sky-400 tracking-wider uppercase">1973 - 1976</span>
+                                <h4 class="font-serif font-bold text-lg text-slate-900 dark:text-white mt-1">Preludio al Golpe y Violencia Parapolicial</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 line-clamp-2">Acción de la Triple A (Alianza Anticomunista Argentina), estado de sitio y decretos de "aniquilamiento".</p>
+                                <div id="detail-1" class="hidden mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-2 text-left">
+                                    <p>Antes de marzo de 1976, la violencia política se intensificó. La organización parapolicial Triple A, encabezada por José López Rega, persiguió y asesinó a intelectuales, militantes y sindicalistas. En 1975, los decretos del Poder Ejecutivo ordenaron "aniquilar la acción de los elementos subversivos".</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-sky-600 border-4 border-white dark:border-slate-950 flex items-center justify-center text-white text-xs font-bold shadow z-10">
+                            1
+                        </div>
+                        <div class="w-full md:w-1/2 md:pl-10 hidden md:block"></div>
+                    </div>
+
+                    <!-- Event 2: 24 Marzo 1976 -->
+                    <div class="relative flex flex-col md:flex-row items-center group cursor-pointer timeline-item" onclick="toggleTimelineDetail('detail-2')">
+                        <div class="w-full md:w-1/2 md:pr-10 hidden md:block"></div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-sky-600 border-4 border-white dark:border-slate-950 flex items-center justify-center text-white text-xs font-bold shadow z-10">
+                            2
+                        </div>
+                        <div class="flex items-center justify-start w-full md:w-1/2 md:pl-10 text-left mb-4 md:mb-0">
+                            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md group-hover:border-sky-500 transition-all w-full">
+                                <span class="text-xs font-bold text-sky-600 dark:text-sky-400 tracking-wider uppercase">24 de Marzo de 1976</span>
+                                <h4 class="font-serif font-bold text-lg text-slate-900 dark:text-white mt-1">El Golpe Militar y la Primera Junta</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 line-clamp-2">Asunción de la Junta Militar formada por Videla, Massera y Agosti. Derogación de las instituciones democráticas.</p>
+                                <div id="detail-2" class="hidden mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-2">
+                                    <p>A la madrugada, las radioemisoras emitieron el Comunicado Nº 1 de la Junta Militar. Se decretó el estado de sitio permanente, la intervención de sindicatos y la imposición de la pena de muerte por edictos militares.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 3: 1977 -->
+                    <div class="relative flex flex-col md:flex-row items-center group cursor-pointer timeline-item" onclick="toggleTimelineDetail('detail-3')">
+                        <div class="flex items-center justify-end w-full md:w-1/2 md:pr-10 text-right mb-4 md:mb-0">
+                            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md group-hover:border-sky-500 transition-all w-full">
+                                <span class="text-xs font-bold text-sky-600 dark:text-sky-400 tracking-wider uppercase">30 de Abril de 1977</span>
+                                <h4 class="font-serif font-bold text-lg text-slate-900 dark:text-white mt-1">Primera Ronda de las Madres de Plaza de Mayo</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 line-clamp-2">Ante la falta de respuestas sobre sus hijos desaparecidos, un grupo de madres se reúne frente a la Casa Rosada.</p>
+                                <div id="detail-3" class="hidden mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-2 text-left">
+                                    <p>14 mujeres marcharon alrededor de la Pirámide de Mayo debido a la prohibición policial de permanecer detenidas en el lugar. Nació así el pañuelo blanco como símbolo universal de la resistencia pacífica y el reclamo por los derechos humanos.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-sky-600 border-4 border-white dark:border-slate-950 flex items-center justify-center text-white text-xs font-bold shadow z-10">
+                            3
+                        </div>
+                        <div class="w-full md:w-1/2 md:pl-10 hidden md:block"></div>
+                    </div>
+
+                    <!-- Event 4: 1982 -->
+                    <div class="relative flex flex-col md:flex-row items-center group cursor-pointer timeline-item" onclick="toggleTimelineDetail('detail-4')">
+                        <div class="w-full md:w-1/2 md:pr-10 hidden md:block"></div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-sky-600 border-4 border-white dark:border-slate-950 flex items-center justify-center text-white text-xs font-bold shadow z-10">
+                            4
+                        </div>
+                        <div class="flex items-center justify-start w-full md:w-1/2 md:pl-10 text-left mb-4 md:mb-0">
+                            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md group-hover:border-sky-500 transition-all w-full">
+                                <span class="text-xs font-bold text-sky-600 dark:text-sky-400 tracking-wider uppercase">1982</span>
+                                <h4 class="font-serif font-bold text-lg text-slate-900 dark:text-white mt-1">Guerra de Malvinas y Colapso del Régimen</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 line-clamp-2">La aventura bélica del régimen militar precipita el descontento popular y el fin de la dictadura.</p>
+                                <div id="detail-4" class="hidden mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-2">
+                                    <p>Tras la derrota militar en el Atlántico Sur y el repudio generalizado por las violaciones a los derechos humanos y la crisis económica, la junta militar se vio obligada a convocar a elecciones públicas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 5: 1983-1985 -->
+                    <div class="relative flex flex-col md:flex-row items-center group cursor-pointer timeline-item" onclick="toggleTimelineDetail('detail-5')">
+                        <div class="flex items-center justify-end w-full md:w-1/2 md:pr-10 text-right mb-4 md:mb-0">
+                            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md group-hover:border-sky-500 transition-all w-full">
+                                <span class="text-xs font-bold text-sky-600 dark:text-sky-400 tracking-wider uppercase">1983 - 1985</span>
+                                <h4 class="font-serif font-bold text-lg text-slate-900 dark:text-white mt-1">Retorno Democrático, CONADEP y Juicio a las Juntas</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 line-clamp-2">Asunción de Raúl Alfonsín, informe "Nunca Más" y condena histórica a los comandantes dictatoriales.</p>
+                                <div id="detail-5" class="hidden mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-2 text-left">
+                                    <p>En diciembre de 1983 se crea la CONADEP. En 1984 entregan el informe *Nunca Más*. En 1985, la Cámara Federal juzga y condena a los jerarcas militares en un proceso judicial inédito en el mundo.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-sky-600 border-4 border-white dark:border-slate-950 flex items-center justify-center text-white text-xs font-bold shadow z-10">
+                            5
+                        </div>
+                        <div class="w-full md:w-1/2 md:pl-10 hidden md:block"></div>
+                    </div>
+
+                    <!-- Event 6: 2002 - Actualidad -->
+                    <div class="relative flex flex-col md:flex-row items-center group cursor-pointer timeline-item" onclick="toggleTimelineDetail('detail-6')">
+                        <div class="w-full md:w-1/2 md:pr-10 hidden md:block"></div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-sky-600 border-4 border-white dark:border-slate-950 flex items-center justify-center text-white text-xs font-bold shadow z-10">
+                            6
+                        </div>
+                        <div class="flex items-center justify-start w-full md:w-1/2 md:pl-10 text-left mb-4 md:mb-0">
+                            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md group-hover:border-sky-500 transition-all w-full">
+                                <span class="text-xs font-bold text-sky-600 dark:text-sky-400 tracking-wider uppercase">2002 - Actualidad</span>
+                                <h4 class="font-serif font-bold text-lg text-slate-900 dark:text-white mt-1">Día Feriado Nacional, Nulidad de Leyes y Políticas de Estado</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 line-clamp-2">Sanción de la Ley 25.633 en 2002, reapertura de los Juicios de Lesa Humanidad e institucionalización de los Espacios de Memoria.</p>
+                                <div id="detail-6" class="hidden mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-2">
+                                    <p>En 2003 el Congreso anuló las Leyes de Punto Final y Obediencia Debida, permitiendo el juzgamiento a cientos de represores. Ex centros clandestinos como la ESMA o La Perla se transformaron en Espacios para la Memoria.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terrorismo de Estado y Represión Sistemática -->
+    <section id="represion" class="py-16 sm:py-24 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-widest mb-2">Metodología Represiva</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Terrorismo de Estado en Argentina</h3>
+                <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- CCD -->
+                <div class="bg-slate-50 dark:bg-slate-950 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-rose-100 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 rounded-xl flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-building-shield"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-xl text-slate-900 dark:text-white mb-3">Centros Clandestinos de Detención (CCD)</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Fueron instalaciones secretas empleadas por las Fuerzas Armadas y de Seguridad para torturar, interrogar y asesinar a miles de personas secuestradas. Funcionaron más de 700 en todo el país, entre ellos la <strong>ESMA</strong>, <strong>Campo de Mayo</strong>, <strong>La Perla</strong> (Córdoba) y <strong>El Vesubio</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Desaparecidos -->
+                <div class="bg-slate-50 dark:bg-slate-950 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-sky-100 dark:bg-sky-950/50 text-sky-600 dark:text-sky-400 rounded-xl flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-user-slash"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-xl text-slate-900 dark:text-white mb-3">Los 30.000 Desaparecidos</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            La desaparición forzada fue el eje central del sistema represivo. Las víctimas no figuraban en listas de detención, impidiendo cualquier recurso de *hábeas corpus*. Los "vuelos de la muerte" sirvieron para arrojar vivas a las víctimas al Mar Argentino o al Río de la Plata.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bebés Apropiados -->
+                <div class="bg-slate-50 dark:bg-slate-950 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-amber-100 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 rounded-xl flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-baby font-bold"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-xl text-slate-900 dark:text-white mb-3">Apropiación de Bebés</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Cientos de mujeres embarazadas dieron a luz en cautiverio bajo condiciones inhumanas. Sus hijos e hijas fueron robados y entregados con identidades falsas a familias vinculadas al régimen o a terceros. Gracias a Abuelas de Plaza de Mayo y el ADN, más de 130 identidades han sido restituidas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organismos de Derechos Humanos -->
+    <section id="organismos" class="py-16 sm:py-24 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-widest mb-2">Resistencia y Búsqueda Ininterrumpida</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Organismos de Derechos Humanos</h3>
+                <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-lg bg-sky-50 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-hands-holding-circle"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">Madres de Plaza de Mayo</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Surgidas en 1977 durante la dictadura. Enfrentaron la represión caminando en torno a la Plaza de Mayo exigiendo la aparición con vida de sus hijos.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-lg bg-sky-50 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-dna"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">Abuelas de Plaza de Mayo</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Organización enfocada en la localización y restitución de la identidad de las niñas y niños secuestrados-desaparecidos durante la dictadura.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-lg bg-sky-50 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-[#000]">H</i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">H.I.J.O.S.</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Hijos e Hijas por la Identidad y la Justicia contra el Olvido y el Silencio. Agrupa a los hijos de detenidos-desaparecidos, asesinados y exiliados.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-lg bg-sky-50 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center text-lg mb-4">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">CELS</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Centro de Estudios Legales y Sociales. Creado en 1979 para documentar sistemáticamente las violaciones a los DDHH y dar asistencia jurídica a los familiares.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Juicios e Hitos Judiciales -->
+    <section id="juicios" class="py-16 sm:py-24 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-widest mb-2">Proceso Judicial e Impunidad Derogada</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">De la CONADEP a los Juicios de Lesa Humanidad</h3>
+                <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="space-y-8">
+                <!-- CONADEP -->
+                <div class="bg-slate-50 dark:bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="w-14 h-14 bg-sky-600 text-white rounded-2xl flex-shrink-0 flex items-center justify-center text-2xl font-bold font-serif">
+                            1984
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="font-serif font-bold text-xl text-slate-900 dark:text-white">El Informe "Nunca Más" (CONADEP)</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Presidida por el escritor Ernesto Sabato, la Comisión Nacional sobre la Desaparición de Personas recopiló miles de testimonios y probó la existencia del plan represivo. Su informe final, entregado en septiembre de 1984, constituye la base fundamental sobre la que se construyeron los juicios posteriores.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juicio a las Juntas -->
+                <div class="bg-slate-50 dark:bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="w-14 h-14 bg-sky-600 text-white rounded-2xl flex-shrink-0 flex items-center justify-center text-2xl font-bold font-serif">
+                            1985
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="font-serif font-bold text-xl text-slate-900 dark:text-white">Juicio a las Juntas Militares</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Proceso judicial civil realizado por la Cámara Nacional de Apelaciones en lo Criminal y Correccional Federal. Derivó en condenas a prisión perpetua para dictadores como Jorge Rafael Videla y Emilio Massera. Las conmovedoras palabras finales del fiscal Julio César Strassera resuenan hasta hoy: <em class="text-sky-600 dark:text-sky-400 font-serif">«Señores jueces: quiero renunciar expresamente a cualquier pretensión de originalidad... Quiero utilizar una frase que no me pertenece... ¡Nunca más!»</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leyes Impunidad y Anulación -->
+                <div class="bg-slate-50 dark:bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="w-14 h-14 bg-slate-800 text-sky-400 rounded-2xl flex-shrink-0 flex items-center justify-center text-xl font-bold font-serif">
+                            2003
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="font-serif font-bold text-xl text-slate-900 dark:text-white">Anulación de la Leyes de Punto Final y Obediencia Debida</h4>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Tras años de impunidad garantizados por las Leyes de Punto Final (1986), Obediencia Debida (1987) y los indultos presidenciales (1989-1990), el Congreso declaró la nulidad insanable de dichas leyes en 2003. En 2005, la Corte Suprema de Justicia declaró la inconstitucionalidad de las leyes de impunidad, permitiendo juzgar a cientos de genocidas en todo el país.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Glosario Interactivo -->
+    <section id="glosario" class="py-16 sm:py-24 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-widest mb-2">Herramienta Pedagógica</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Glosario de Términos Fundamentales</h3>
+                <p class="text-slate-600 dark:text-slate-400 mt-2">Busca conceptos clave sobre la memoria histórica y los Derechos Humanos.</p>
+                <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Search Input -->
+            <div class="max-w-md mx-auto mb-10 relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+                <input type="text" id="glossarySearch" placeholder="Buscar concepto (ej: Hábeas Corpus, ESMA, Pañuelo)..." class="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all text-sm">
+            </div>
+
+            <!-- Glossary Grid -->
+            <div id="glossaryGrid" class="grid md:grid-cols-2 gap-4">
+                <div class="glossary-card bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <h4 class="font-serif font-bold text-slate-900 dark:text-white text-base mb-1">Hábeas Corpus</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">Garantía constitucional que protege la libertad física contra detenciones arbitrarias. Durante la dictadura, miles de recursos fueron sistemáticamente rechazados por los jueces.</p>
+                </div>
+
+                <div class="glossary-card bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <h4 class="font-serif font-bold text-slate-900 dark:text-white text-base mb-1">Escrache</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">Manifestación popular organizada principalmente por H.I.J.O.S. ante el domicilio de genocidas no juzgados durante el periodo de las leyes de impunidad.</p>
+                </div>
+
+                <div class="glossary-card bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <h4 class="font-serif font-bold text-slate-900 dark:text-white text-base mb-1">Pañuelo Blanco</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">Símbolo adoptado por las Madres de Plaza de Mayo. Originalmente utilizaban los pañales de tela de sus hijos para reconocerse mutuamente en las concentraciones.</p>
+                </div>
+
+                <div class="glossary-card bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <h4 class="font-serif font-bold text-slate-900 dark:text-white text-base mb-1">Restitución de Identidad</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">Proceso biológico y legal impulsado por las Abuelas de Plaza de Mayo para devolver la verdadera identidad biológica y familiar a los nietos apropiados.</p>
+                </div>
+
+                <div class="glossary-card bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <h4 class="font-serif font-bold text-slate-900 dark:text-white text-base mb-1">BNDG (Banco Nacional de Datos Genéticos)</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">Institución pública autónoma creada en 1987 que almacena perfiles genéticos de familiares de personas desaparecidas para posibilitar la filiación de los hijos apropiados.</p>
+                </div>
+
+                <div class="glossary-card bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <h4 class="font-serif font-bold text-slate-900 dark:text-white text-base mb-1">Vuelos de la Muerte</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">Método de exterminio sistemático mediante el cual detenidos sedados eran arrojados vivos desde aviones militares hacia el río o el océano.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentos y Fragmentos Históricos -->
+    <section id="documentos" class="py-16 sm:py-24 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-widest mb-2">Fuentes Primarias</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Textos e Históricos Documentos</h3>
+                <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex justify-center space-x-2 border-b border-slate-200 dark:border-slate-800 mb-8 overflow-x-auto pb-2">
+                <button onclick="switchTab('tab-sabato')" id="btn-tab-sabato" class="tab-btn px-4 py-2 font-medium text-sm rounded-lg text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/60 transition-all">
+                    Prólogo del "Nunca Más"
+                </button>
+                <button onclick="switchTab('tab-walsh')" id="btn-tab-walsh" class="tab-btn px-4 py-2 font-medium text-sm rounded-lg text-slate-600 dark:text-slate-400 hover:text-sky-600 transition-all">
+                    Carta Abierta de Rodolfo Walsh
+                </button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div id="tab-sabato" class="tab-content bg-slate-50 dark:bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <h4 class="font-serif font-bold text-xl text-slate-900 dark:text-white mb-2">Fragmento del Prólogo del Informe "Nunca Más" (1984)</h4>
+                <p class="text-xs text-sky-600 dark:text-sky-400 mb-6 font-semibold">Ernesto Sabato / CONADEP</p>
+                <div class="font-serif italic text-sm text-slate-700 dark:text-slate-300 space-y-4 leading-relaxed border-l-4 border-sky-500 pl-4">
+                    <p>
+                        «Durante la década del 70 la Argentina fue conmovida por un terrorismo que provino tanto de la extrema derecha como de la extrema izquierda [...] A los delitos de los terroristas, las Fuerzas Armadas respondieron con un terrorismo infinitamente peor que el combatido, porque desde el 24 de marzo de 1976 contaron con el poder y la impunidad del Estado absoluto, secuestrando, torturando y asesorando a miles de personas...»
+                    </p>
+                    <p>
+                        «De esta manera, la tranquilidad instaurada fue la tranquilidad de las cementerios. Las Fuerzas Armadas respondieron a los crímenes con una metodología clandestina de exterminio...»
+                    </p>
+                </div>
+            </div>
+
+            <div id="tab-walsh" class="tab-content hidden bg-slate-50 dark:bg-slate-950 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <h4 class="font-serif font-bold text-xl text-slate-900 dark:text-white mb-2">Carta Abierta de un Escritor a la Junta Militar (24 de marzo de 1977)</h4>
+                <p class="text-xs text-sky-600 dark:text-sky-400 mb-6 font-semibold">Rodolfo Walsh (Periodista y escritor, secuestrado al día siguiente de su difusión)</p>
+                <div class="font-serif italic text-sm text-slate-700 dark:text-slate-300 space-y-4 leading-relaxed border-l-4 border-amber-500 pl-4">
+                    <p>
+                        «La censura de prensa, la persecución a intelectuales, el allanamiento de mi hogar, el asesinato de amigos queridos y la pérdida de una hija que murió combatiéndolos, son algunos de los hechos que me obligan a esta forma de expresión clandestina...»
+                    </p>
+                    <p>
+                        «Estos hechos, que sacuden la conciencia del mundo civilizado, no son sin embargo los que mayores sufrimientos han traído al pueblo argentino ni las peores violaciones de los derechos humanos en que ustedes incurren. En la política económica de este gobierno debe buscarse no sólo la explicación de sus crímenes sino una atrocidad mayor que castiga a millones de seres humanos con la miseria planificada...»
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <div class="flex items-center justify-center space-x-2">
+                <svg class="w-6 h-6 text-sky-400" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M 10,20 Q 50,5 90,20 Q 80,75 50,90 Q 20,75 10,20 Z" fill="none" stroke="currentColor" stroke-width="6"/>
+                    <path d="M 25,30 C 40,20 60,20 75,30 C 65,65 50,75 50,75 C 50,75 35,65 25,30 Z" fill="currentColor" opacity="0.3"/>
+                </svg>
+                <span class="font-serif font-bold text-white text-lg">30.000 Detenidos Desaparecidos Presentes</span>
+            </div>
+            
+            <p class="text-sm text-slate-400 max-w-xl mx-auto font-light">
+                Memoria, Verdad y Justicia. Recurso de consulta pedagógica y difusión histórica sobre el Día Nacional de la Memoria por la Verdad y la Justicia en Argentina.
+            </p>
+
+            <div class="text-xs text-slate-400 pt-4 border-t border-slate-900">
+                &copy; Recurso Educativo Abierto. Construyendo Memoria colectiva.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Dark Mode
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Toggle Timeline Details
+        function toggleTimelineDetail(id) {
+            const detail = document.getElementById(id);
+            if (detail) {
+                detail.classList.toggle('hidden');
+            }
+        }
+
+        // Search in Glossary
+        const glossarySearch = document.getElementById('glossarySearch');
+        const glossaryCards = document.querySelectorAll('.glossary-card');
+
+        glossarySearch.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            glossaryCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Switch Tabs for Historical Documents
+        function switchTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            const btns = document.querySelectorAll('.tab-btn');
+
+            contents.forEach(content => content.classList.add('hidden'));
+            btns.forEach(btn => {
+                btn.classList.remove('text-sky-600', 'dark:text-sky-400', 'bg-sky-50', 'dark:bg-sky-950/60');
+                btn.classList.add('text-slate-600', 'dark:text-slate-400');
+            });
+
+            const activeTab = document.getElementById(tabId);
+            const activeBtn = document.getElementById('btn-' + tabId);
+
+            if (activeTab && activeBtn) {
+                activeTab.classList.remove('hidden');
+                activeBtn.classList.add('text-sky-600', 'dark:text-sky-400', 'bg-sky-50', 'dark:bg-sky-950/60');
+                activeBtn.classList.remove('text-slate-600', 'dark:text-slate-400');
+            }
+        }
+    </script>
+</body>
+</html>
